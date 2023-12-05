@@ -7,7 +7,7 @@ spinner() {
     local spinstr='|/-\'
     while ps -p $pid > /dev/null; do
         local temp=${spinstr#?}
-        printf "[%c] " "$spinstr"
+        printf "\e[1;34m[%c]\e[0m " "$spinstr"  # Blue color for spinner
         local spinstr=$temp${spinstr%"$temp"}
         sleep $delay
         printf "\b\b\b\b\b\b"
@@ -31,4 +31,7 @@ git commit -m "$commit_message" &
 spinner $!
 
 # Push changes to the remote repository
-git push origin $branch_name
+git push origin $branch_name    
+
+# Pull changes to the remote repository
+git push origin $branch_name       
