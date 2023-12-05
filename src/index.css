@@ -9,3 +9,18 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+@layer base {
+  
+  .scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .scroll::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  .scroll::-webkit-scrollbar-thumb {
+    @apply rounded-md bg-slate-300 dark:bg-slate-800/90; 
+  }
+}
+  

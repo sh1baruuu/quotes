@@ -18,6 +18,15 @@ export default {
       },
       fontFamily: {
         "title": "Hedvig Letters Serif"
+      },
+      keyframes: {
+        loader: {
+          '100%': { width: '0', right: "0", left: "unset"},
+          '50%': { width: '100%' },
+        }
+      },
+      animation: {
+        'loader': 'loader 1s ease-in-out infinite'
       }
     },
   },

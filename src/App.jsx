@@ -14,7 +14,7 @@ function App() {
     const [showSearch, setShowSearch] = useState(false);
 
     const toggleSearch = () => {
-        setShowSearch(true);
+        setShowSearch(prev => !prev);
     };
 
     const handleKeyDown = (event) => {
@@ -44,9 +44,9 @@ function App() {
     return (
         <main className='flex relative flex-col min-h-screen dark:bg-slate-900 overflow-hidden'>
             <div className='bg-gradient-to-t from-white/60 dark:from-black/60 to-transparent w-screen h-[20vh] absolute bottom-0 right-0 z-10'></div>
-            {showSearch && <Search />}
+            {showSearch && <Search quotes={quotes} toggleSearch={toggleSearch} />}
             <Nav onSearch={toggleSearch} />
-            <div className='bg-white dark:bg-slate-950 flex flex-wrap justify-center gap-3 pt-20 pl-14 pr-12 h-screen overflow-y-scroll'>
+            <div className='bg-white md:scroll dark:bg-slate-950 flex flex-wrap justify-center pt-32 gap-3 pl-14 pr-12 h-screen overflow-y-scroll'>
                 {quotes.map(({ id, author, body }) => {
                     return <Card author={author} body={body} key={id} />;
                 })}
