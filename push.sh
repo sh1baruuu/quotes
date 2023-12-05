@@ -1,16 +1,16 @@
 #!/bin/bash
 
-# Function to display a spinner while commands are executing
+# Function to display a spinning indicator while commands are executing
 spinner() {
     local pid=$1
-    local delay=0.05
+    local delay=0.15
     local spinstr='|/-\'
     while ps -p $pid > /dev/null; do
-        local temp=${spinstr#?}
-        printf "\e[1;34m[%c]\e[0m " "$spinstr"  # Blue color for spinner
-        local spinstr=$temp${spinstr%"$temp"}
-        sleep $delay
-        printf "\b\b\b\b\b\b"
+        for ((i=0; i<${#spinstr}; i++)); do
+            printf "\e[1;36m[%c]\e[0m " "${spinstr:i:1}"  # Cyan color for spinner
+            sleep $delay
+            printf "\b\b\b\b\b\b"
+        done
     done
     printf "    \b\b\b\b"
 }
@@ -27,11 +27,11 @@ git add .
 # Commit changes with the provided message
 git commit -m "$commit_message" &
 
-# Display the spinner while the commit is in progress
+# Display the spinning indicator while the commit is in progress
 spinner $!
 
 # Push changes to the remote repository
-git push origin $branch_name    
+git push origin $branch_name
 
 # Pull changes to the remote repository
-git push origin $branch_name       
+git pull origin $branch_name       
