@@ -3,7 +3,7 @@
 # Function to display a spinner while commands are executing
 spinner() {
     local pid=$1
-    local delay=0.15
+    local delay=0.05
     local spinstr='|/-\'
     while ps -p $pid > /dev/null; do
         local temp=${spinstr#?}
