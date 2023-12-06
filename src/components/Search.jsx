@@ -37,7 +37,7 @@ function Search({ quotes, toggleSearch }) {
         >
             <div
                 onClick={(e) => e.stopPropagation()}
-                className='h-[75%] mb-16 relative w-[50%] overflow-hidden dark:bg-slate-950 bg-white rounded-md'
+                className='h-full w-full md:h-[60%] md:w-9/12 lg:h-[75%] lg:w-[50%] lg:mb-16 relative  overflow-hidden dark:bg-slate-950 bg-white rounded-md'
             >
                 <div className='w-full p-4 pb-3 h-fit dark:text-white/90 text-slate-500 border-b border-slate-200 dark:border-slate-800'>
                     <div className='relative'>
@@ -83,7 +83,7 @@ function Search({ quotes, toggleSearch }) {
                         </p>
                     )}
                 </div>
-                <SearchFooter />
+                <SearchFooter toggleSearch={toggleSearch} />
             </div>
         </div>
     );
