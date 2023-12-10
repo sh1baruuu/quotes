@@ -1,7 +1,10 @@
 import { faArrowRight, faQuoteRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useNavigate } from 'react-router-dom';
 
-function SearchCard({ author, body, tags }) {
+function SearchCard({id, author, body, tags }) {
+    const navigate = useNavigate();
+
     return (
         <div className='flex w-full overflow-hidden dark:hover:bg-slate-800/30 hover:bg-slate-100  rounded-md min-h-[5rem] h-20'>
             <div className='h-full w-12 grid place-items-center'>
@@ -19,7 +22,7 @@ function SearchCard({ author, body, tags }) {
                     ) : (
                         <>
                         {"..."}
-                        <p className='pt-[2px] cursor-pointer hover:text-blue-500 lg:text-xs text-[.65rem]'>
+                        <p onClick={()=>navigate(`/view/${id}`)} className='pt-[2px] cursor-pointer hover:text-blue-500 lg:text-xs text-[.65rem]'>
                             See more
                         </p></>
                     )}
@@ -39,7 +42,7 @@ function SearchCard({ author, body, tags }) {
                     )}
                 </div>
             </div>
-            <button className='h-full w-12  grid place-items-center'>
+            <button onClick={()=>navigate(`/view/${id}`)} className='h-full w-12  grid place-items-center'>
                 <FontAwesomeIcon
                     className='h-4 rotate-[-45deg] text-slate-500 dark:text-slate-700'
                     icon={faArrowRight}

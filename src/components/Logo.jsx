@@ -1,4 +1,4 @@
-import logo from '../assets/quotes.png';
+import logo from '../assets/quotes.svg';
 
 export const Logo = () => {
     return (

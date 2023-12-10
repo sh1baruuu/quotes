@@ -3,31 +3,45 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
 import SearchCard from './SearchCard';
 import { SearchFooter } from './SearchFooter';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
-function Search({ quotes, toggleSearch }) {
-    const [authorIs, setAuthorIs] = useState('');
+function Search({ quotes }) {
+    const navigate = useNavigate();
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [query, setQuery] = useState(searchParams.get('author'));
     const [filteredQuotes, setFilteredQuotes] = useState(quotes);
     const [isSearching, setIsSearching] = useState(false);
+    console.log(query);
+    const toggleSearch = () => {
+        navigate('/');
+    };
 
     useEffect(() => {
-        if (authorIs) setIsSearching(true);
+        if (!query) {
+            setSearchParams('');
+            setFilteredQuotes(quotes);
+            return;
+        }
+
+        setIsSearching(true);
         const timer = setTimeout(() => {
             const filtered = quotes.filter((quote) =>
-                quote.author.toLowerCase().startsWith(authorIs.toLowerCase())
+                quote.author.toLowerCase().startsWith(query.toLowerCase())
             );
-            setFilteredQuotes(filtered);
+            setSearchParams({ author:   query });
             setIsSearching(false);
+            setFilteredQuotes(filtered);
         }, 1000);
 
         return () => clearTimeout(timer);
-    }, [authorIs, quotes]);
+    }, [query, quotes, setSearchParams]);
 
     const handleChange = (event) => {
-        setAuthorIs(event.target.value);
+        setQuery(event.target.value);
     };
 
     const clearInput = () => {
-        setAuthorIs('');
+        setQuery("")
     };
 
     return (
@@ -52,7 +66,7 @@ function Search({ quotes, toggleSearch }) {
                             maxLength={40}
                             autoComplete='off'
                             spellCheck={true}
-                            value={authorIs}
+                            value={query}
                             onChange={handleChange}
                             className='bg-transparent text-sm placeholder:text-slate-500 placeholder:font-medium border-slate-300 shadow-sm rounded-md border focus:outline-none focus:ring px-12 dark:caret-blue-500 dark:border-slate-800 w-full h-12'
                         />
@@ -70,6 +84,7 @@ function Search({ quotes, toggleSearch }) {
                     {filteredQuotes.map(({ id, author, tags, body }) => {
                         return (
                             <SearchCard
+                                id={id}
                                 author={author}
                                 body={body}
                                 tags={tags}

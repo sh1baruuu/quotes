@@ -1,10 +1,12 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
-function Card({body, author}) {
-
+function Card({body, author, id}) {
+    const navigate = useNavigate();
 
     return (
     <div
+    onClick={()=>navigate(`/view/${id}`)}
     className='bg-gradient-to-b from-slate-50 to-slate-200 dark:from-slate-900 dark:to-slate-900 shadow-sm overflow-hidden flex flex-col relative justify-center items-center p-10 h-40 md:h-52 w-[300px] border dark:border-0 rounded-md'
 >
     <h1
