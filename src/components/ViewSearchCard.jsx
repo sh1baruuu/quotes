@@ -29,7 +29,7 @@ function ViewSearchCard() {
         >
             <div
                 onClick={(e) => e.stopPropagation()}
-                className='flex md:w-6/12 w-[90%] px-4 overflow-hidden relative dark:bg-slate-950 bg-white rounded-lg h-64'
+                className='flex md:w-6/12 w-[90%] px-4 overflow-hidden relative dark:bg-slate-900 bg-white rounded-lg h-64'
             >
                 <div
                     onClick={() => navigate(-1)}

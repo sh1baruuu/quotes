@@ -69,10 +69,10 @@ function App({ data }) {
 
     return (
         <main className='flex relative flex-col min-h-screen dark:bg-slate-900 overflow-hidden'>
-            <div className='bg-gradient-to-t flex justify-end items-end  from-white/60 dark:from-black/60 to-transparent w-screen h-[20vh] absolute bottom-0 right-0 z-10'>
+            <div className='bg-gradient-to-t flex md:justify-end justify-center items-end  from-white/60 dark:from-black/60 to-transparent w-screen h-[20vh] absolute bottom-0 right-0 z-10'>
                 <button
                     onClick={scrollToTop}
-                    className={`dark:text-white/90 bg-slate-300 dark:bg-slate-800 grid place-items-center rounded-t-full rounded-b-full text-black/80 w-6 h-12 mb-5 mr-5 transition-all  ${
+                    className={`dark:text-white/90 bg-slate-300 dark:bg-slate-800 grid place-items-center rounded-t-full rounded-b-full text-black/80 w-6 h-12 lg:mb-5 md:mb-10 mb-15  lg:mr-5 transition-all  ${
                         isVisible ? 'translate-y-0' : 'translate-y-[200%] '
                     }`}
                 >
