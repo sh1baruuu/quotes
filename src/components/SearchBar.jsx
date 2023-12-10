@@ -1,6 +1,6 @@
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Ctrl from './ctrl';
+import Ctrl from './Ctrl';
 
 export function SearchBar({ onSearch }) {
     return (
